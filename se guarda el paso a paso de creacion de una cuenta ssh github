@@ -1,0 +1,8 @@
+creacion de la clave ssh 
+
+
+1 ssh keygen
+2 enter to all 
+3 insert cat ~/.ssh/id_rsa.pub
+
+
