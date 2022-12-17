@@ -19,21 +19,21 @@ const listUser = [
     Número_de_documento: 121,
     Contraseña: "1",
     Tipo_de_usuario: 1,
-    activo:false,
+    activo: false,
   },
   {
     Nombre: "Maria Fernanda Sepulveda",
     Número_de_documento: 112,
     Contraseña: "1111",
     Tipo_de_usuario: 2,
-    activo:false,
+    activo: false,
   },
   {
     Nombre: "Santiago Sepulveda",
     Número_de_documento: 1,
     Contraseña: "1",
     Tipo_de_usuario: 2,
-    activo:false,
+    activo: false,
   },
 ];
 
@@ -61,14 +61,13 @@ const login = () => {
         TypeUser === 2
           ? alert(`Login exitoso ¡  Bienvenido  administrador : ${NameUser}. `)
           : alert(`Login exitoso ¡  Bienvenido cliente : ${NameUser}. `);
-         /*  
+        /*  
           const indexActual=  listUser.indexOf(activo)
           listUser[indexActual]=true
 
 
           const estado= listUser[indexActual];
           console.log(listUser) */
-
 
         return;
       } else if (listUser.length - 1 === index) {
@@ -125,9 +124,8 @@ const AdmonCajero = () => {
       "Desea realizar otra Recarga de dinero ? "
     );
     if (mensajeNuevoLote) {
-      login()
+      login();
       AdmonCajero();
-
     }
 
     return;
@@ -169,39 +167,65 @@ const conversionDinero = () => {
   console.log(" Total del cajero actualmente :" + TotalCajero);
 };
 
-
-
-const cajeroAutomatico = ()=>{
-  const mejsajeBienvenida=alert("Bienvenido al Cajero Automatico Gana Gana")
+const cajeroAutomatico = () => {
+  const mejsajeBienvenida = alert("Bienvenido al Cajero Automatico Gana Gana");
   login();
   AdmonCajero();
+};
 
-}
+let valorRetiro = 5000;
+let PagosRetiro = 0;
+let PagoRestante = valorRetiro;
+let CantidadCien = 0;
+let valorCien = 0;
+let numero = 0;
+let cantidad = 0;
+let restante = 0;
 
-const retiro = ()=>{
+const retiroDineroPorTipo = (valorBillete, valorRetiro2) => {
+  const numero = valorBillete;
+  const valorRetiroF = valorRetiro2;
+  const cantidad = parseInt(valorRetiroF / numero);
+  const restante = valorRetiro % numero;
+  const totalBilLetes = cantidad * numero;
+  console.log(
+    `Cantidad de billetes de Entregados $ ${numero} COP: ` + cantidad
+  );
+  console.log(`Total pago en billetes de $ ${numero} COP : ` + totalBilLetes);
+  valorRetiro = restante;
+  PagoRestante = restante;
+};
 
-   if( TotalCajero <=0) {
-console.log("Cajero en mantenimiento, vuelva pronto." );
-login()
-    return
+const retiro = () => {
+  if (TotalCajero <= 0) {
+    console.log("Cajero en mantenimiento, vuelva pronto.");
+    login();
+    return;
+  } else {
+    const valorRetiro = parseInt(
+      alert(
+        "Que cantidad desea retirar, solo numeros enteros valor minimo  5000 ? "
+      )
+    );
+    for (let index = 0; index < 6; index++) {
+      if (PagoRestante >= 100000) {
+        numero = 100000;
+        retiroDineroPorTipo(numero, valorRetiro);
+      } else if (PagoRestante >= 50000) {
+        numero = 50000;
+        retiroDineroPorTipo(numero, valorRetiro);
+      } else if (PagoRestante >= 20000) {
+        numero = 20000;
+        retiroDineroPorTipo(numero, valorRetiro);
+      } else if (PagoRestante >= 10000) {
+        numero = 10000;
+        retiroDineroPorTipo(numero, valorRetiro);
+      } else if (PagoRestante >= 5000) {
+        numero = 5000;
+        retiroDineroPorTipo(numero, valorRetiro);
+      }
+    }
+  }
+};
 
-   } else{
-     const valorRetiro=  parseInt( alert("Que cantidad desea retirar, solo numeros enteros valor minimo  5000 ? "))
-     const dineroEnCajero= TotalCajero;
-
-     if(dineroEnCajero >=valorRetiro){
-      
-        
-
-     }
-     const disponibleDe = dineroEnCajero -valorRetiro
-
-
-   }
-  
-
-
-}
-
-
-cajeroAutomatico()
+//cajeroAutomatico();
