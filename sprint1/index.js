@@ -118,6 +118,7 @@ const AdmonCajero = () => {
     tipoBillete.Cien = isNaN(setBilleteCien) ? 0 : setBilleteCien;
 
     const IngresoBilletesCajero = EfectivoCajero.push(tipoBillete);
+
     EfectivoCajero ? conversionDinero() : console.log("Cajero Vacio ");
 
     const mensajeNuevoLote = confirm(
@@ -183,7 +184,7 @@ let cantidad = 0;
 let restante = 0;
 
 const retiroDineroPorTipo = (valorBillete, valorRetiro2) => {
-  const numero = valorBillete;
+  /*  const numero = valorBillete;
   const valorRetiroF = valorRetiro2;
   const cantidad = parseInt(valorRetiroF / numero);
   const restante = valorRetiro % numero;
@@ -193,8 +194,107 @@ const retiroDineroPorTipo = (valorBillete, valorRetiro2) => {
   );
   console.log(`Total pago en billetes de $ ${numero} COP : ` + totalBilLetes);
   valorRetiro = restante;
-  PagoRestante = restante;
+  PagoRestante = restante; */
 };
+
+const pruebas = [
+  {
+    Cinco: 0,
+    Diez: 0,
+    Veinte: 0,
+    Cincuenta: 0,
+    Cien: 2,
+  },
+
+  {
+    Cinco: 0,
+    Diez: 0,
+    Veinte: 0,
+    Cincuenta: 0,
+    Cien: 10,
+  },
+
+  {
+    Cinco: 0,
+    Diez: 0,
+    Veinte: 0,
+    Cincuenta: 0,
+    Cien: 20,
+  },
+];
+
+const numero2 = 100000;
+console.log(numero2);
+
+let habilitado=true;
+
+
+const eliminacion = (cantidad,element)=>{
+
+
+  if (cantidad > 0  ) {
+       
+      if (cantidad>0) {
+        const descuento = element - cantidad;
+        let RetiroEfe = {
+          Cien: 0,
+        };
+  
+        RetiroEfe = new Object();
+        RetiroEfe.Cien = descuento;
+        const key = pruebas.indexOf(element);
+       
+        habilitado= false
+        pruebas.slice(key,1);
+        pruebas.push(RetiroEfe);
+  
+      } 
+    }
+
+}
+
+
+
+for (let index = 0; index < pruebas.length; index++) {
+  const element = pruebas[index].Cien;
+  let cantidad = 2;
+  eliminacion(cantidad,element )
+ 
+}
+
+
+
+
+
+switch (numero2) {
+  case 100000:
+    //let monedaT = Cien;
+
+      
+    
+
+    console.log(cantidad);
+
+    break;
+
+  case 50000:
+    Cincuenta: 0;
+    break;
+
+  case 20000:
+    Veinte: 0;
+    break;
+
+  case 10000:
+    break;
+  case 5000:
+    break;
+
+  default:
+    break;
+}
+
+console.log(pruebas);
 
 const retiro = () => {
   if (TotalCajero <= 0) {
