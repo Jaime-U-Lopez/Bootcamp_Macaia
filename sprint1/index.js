@@ -223,66 +223,74 @@ const pruebas = [
   },
 ];
 
+
+console.log(pruebas);
+
 const numero2 = 100000;
 console.log(numero2);
 
-let habilitado=true;
+let habilitado = true;
 
-
-const eliminacion = (cantidad,element)=>{
-
-
-  if (cantidad > 0  ) {
-       
-      if (cantidad>0) {
-        const descuento = element - cantidad;
-        let RetiroEfe = {
-          Cien: 0,
-        };
+const eliminacion = (cantidad, element,moneda) => {
   
-        RetiroEfe = new Object();
-        RetiroEfe.Cien = descuento;
-        const key = pruebas.indexOf(element);
-       
-        habilitado= false
-        pruebas.slice(key,1);
-        pruebas.push(RetiroEfe);
   
-      } 
-    }
+};
 
-}
-
-
-
-for (let index = 0; index < pruebas.length; index++) {
-  const element = pruebas[index].Cien;
-  let cantidad = 2;
-  eliminacion(cantidad,element )
- 
-}
-
-
+let cantidad2 = 20;
 
 
 
 switch (numero2) {
   case 100000:
-    //let monedaT = Cien;
 
-      
+    for (let index = 0; index < pruebas.length; index++) {
+
+      let element = pruebas[index];
+      let IndexMoneda = element
+      let totalUnidadesIndex=IndexMoneda.Cien
     
+      if(totalUnidadesIndex>=cantidad2){
+        const descuento= totalUnidadesIndex-cantidad2;
+        IndexMoneda.Cien = descuento;
+        cantidad2=0;
+      }
+    
+      }
 
-    console.log(cantidad);
 
     break;
 
   case 50000:
-    Cincuenta: 0;
+
+    for (let index = 0; index < pruebas.length; index++) {
+
+      let element = pruebas[index];
+      let IndexMoneda = element
+      let totalUnidadesIndex=IndexMoneda.Cincuenta
+    
+      if(totalUnidadesIndex>=cantidad2){
+        const descuento= totalUnidadesIndex-cantidad2;
+        IndexMoneda.Cincuenta = descuento;
+        cantidad2=0;
+      }else if(totalUnidadesIndex<=cantidad2){
+        const descuento= totalUnidadesIndex-cantidad2;
+        IndexMoneda.Cincuenta = descuento;
+        cantidad2=0;
+
+
+      }
+      
+   
+   
+
+      }
+
     break;
 
   case 20000:
     Veinte: 0;
+
+
     break;
 
   case 10000:
