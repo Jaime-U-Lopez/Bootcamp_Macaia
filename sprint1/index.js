@@ -43,19 +43,7 @@ const UnidadesRetiro = [
   },
 ];
 
-// programa de login
 
-/* let PagoRestante = 0;
-
-let totalCinco = 0;
-let totalDiez = 0;
-let totalVeinte = 0;
-let totalCincuenta = 0;
-let totalCien = 0;
-let TotalCajero = 500000; */
-let valorRetiroInicial = 0;
-let valorRetiroSaldo = 0;
-let correr = false;
 
 const login = () => {
   const mensajeEntrada = confirm(" Debes de hacer Log in para ingresar ");
@@ -161,6 +149,9 @@ const retiro = () => {
     if(valorRetiro<= saldoCajero && valorRetiro >=5000 ){
 
       OperacionRetiro(valorRetiro);
+      console.log(" ")
+      console.log(" ")
+     console.log("Saldo actual del cajero :" + saldo()) 
 
     }else{
 
@@ -322,7 +313,8 @@ const OperacionRetiro = (valor) => {
         break;
     }
   }
-
+  console.log(" ")
+  console.log(" ")
   for( let u of UnidadesRetiro){
 
     let cinco= u.Cinco;
@@ -339,10 +331,31 @@ const OperacionRetiro = (valor) => {
     console.log (`Se entraga cantidad de Billetes de 5 COP : ${cinco} por valor de $: ${cinco*5000}` )
   }
 
-
- let totalRetiro=saldoRetiros();
+  let totalRetiro=saldoRetiros();
+  console.log(" ")
   console.log("Valor Retirado y entregado : " + totalRetiro )
+
+  console.log(" ")
+  for( let u of EfectivoCajero){
+
+    let cinco= u.Cinco;
+    let diez= u.Diez;
+    let veinte= u.Veinte;
+    let cincuenta= u.Cincuenta;
+    let cien= u.Cien;
+
+    console.log(`Total billetes restantes en cajero de 100 COP : ${cien} por valor de : ${cien*100000} `  )
+
+    console.log(`Total billetes restantes en cajero de 50 COP : ${cincuenta}   por valor de $:  ${cincuenta*50000}` )
+    console.log(`Total billetes restantes en cajero de 20 COP : ${veinte} por valor de $: ${veinte*20000}` )
+    console.log (`Total billetes restantes en cajero de 10 COP : ${diez} por valor de $: ${diez*10000}` )
+    console.log (`Total billetes restantes en cajero de 5 COP : ${cinco} por valor de $: ${cinco*5000}` )
+  }
+
+
 };
+
+
 
 const saldoRetiros = () => {
   let valorActual = 0;
